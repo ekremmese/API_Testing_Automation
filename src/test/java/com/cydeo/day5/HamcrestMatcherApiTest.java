@@ -32,7 +32,8 @@ public class HamcrestMatcherApiTest {
 
         //this is called chaining
 
-        given().accept(ContentType.JSON)
+        given().log().all()
+                .accept(ContentType.JSON)
                 .and()
                     .pathParam("id", 15)
                 .when()
@@ -45,7 +46,8 @@ public class HamcrestMatcherApiTest {
                 .body("id",equalTo(15),
                         "name",is("Meta"),
                         "gender", is("Female"),
-                        "phone", is(1938695106));
+                        "phone", is(1938695106))
+                .log().all();
 
 
     }
@@ -75,7 +77,7 @@ public class HamcrestMatcherApiTest {
 
     }
 
-    @DisplayName("GET request to teacher/aşş and chaining")
+    @DisplayName("GET request to teacher/all and chaining")
     @Test
     public void test3(){
 
