@@ -37,5 +37,32 @@ public class JSONtoJAVATest extends SpartanTestBase {
 
     }
 
+    @DisplayName("GET all spartans to Java data structure")
+    @Test
+    public void test2(){
+
+        Response response = given().get("/api/spartans/")
+                .then()
+                .statusCode(200)
+                .extract().response();
+
+        List <Map <String, Object>> allSpartans = response.as(List.class);
+
+        System.out.println(allSpartans.get(0).get("name"));
+
+        int counter = 1;
+        for (Map<String, Object> allSpartan : allSpartans) {
+            System.out.println(counter + " - " + allSpartan);
+            counter++;
+        }
+
+        //System.out.println(allSpartans);
+
+
+    }
+
 
 }
+
+
+//2:57:23
